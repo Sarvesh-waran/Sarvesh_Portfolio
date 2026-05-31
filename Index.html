@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sarveshwaran Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#050816;
+      color:white;
+      overflow-x:hidden;
+    }
+
+    /* Navbar */
+
+    nav{
+      width:100%;
+      padding:20px 10%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:fixed;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(10px);
+      background:rgba(0,0,0,0.3);
+    }
+
+    nav h2{
+      color:#00f7ff;
+      font-size:28px;
+    }
+
+    nav ul{
+      display:flex;
+      gap:30px;
+      list-style:none;
+    }
+
+    nav ul li a{
+      text-decoration:none;
+      color:white;
+      transition:0.3s;
+    }
+
+    nav ul li a:hover{
+      color:#00f7ff;
+    }
+
+    /* Hero */
+
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:0 10%;
+      position:relative;
+    }
+
+    .hero-content h1{
+      font-size:70px;
+      background:linear-gradient(to right,#00f7ff,#008cff);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+    }
+
+    .hero-content h3{
+      margin-top:20px;
+      font-size:28px;
+      color:#ccc;
+    }
+
+    .hero-content p{
+      margin-top:25px;
+      color:#aaa;
+      line-height:1.8;
+      max-width:700px;
+    }
+
+    .buttons{
+      margin-top:40px;
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:14px 30px;
+      border:none;
+      border-radius:40px;
+      background:#00f7ff;
+      color:black;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+    }
+
+    .btn:hover{
+      transform:translateY(-5px);
+      box-shadow:0 0 20px #00f7ff;
+    }
+
+    .outline{
+      background:transparent;
+      border:2px solid #00f7ff;
+      color:white;
+    }
+
+    /* Sections */
+
+    section{
+      padding:100px 10%;
+    }
+
+    .title{
+      font-size:45px;
+      margin-bottom:50px;
+      color:#00f7ff;
+      text-align:center;
+    }
+
+    /* About */
+
+    .about-box{
+      background:#0f172a;
+      padding:40px;
+      border-radius:25px;
+      line-height:1.8;
+      color:#ccc;
+      border:1px solid #1e293b;
+    }
+
+    /* Skills */
+
+    .skills-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .skill-card{
+      background:#0f172a;
+      padding:30px;
+      border-radius:25px;
+      transition:0.3s;
+      border:1px solid #1e293b;
+    }
+
+    .skill-card:hover{
+      transform:translateY(-10px);
+      border-color:#00f7ff;
+    }
+
+    .skill-card h3{
+      margin-bottom:20px;
+      color:#00f7ff;
+    }
+
+    .skill-card ul{
+      list-style:none;
+      color:#ccc;
+      line-height:2;
+    }
+
+    /* Projects */
+
+    .projects{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:30px;
+    }
+
+    .project-card{
+      background:#0f172a;
+      padding:30px;
+      border-radius:25px;
+      border:1px solid #1e293b;
+      transition:0.3s;
+    }
+
+    .project-card:hover{
+      transform:translateY(-10px);
+      border-color:#00f7ff;
+    }
+
+    .project-card h3{
+      color:#00f7ff;
+      margin-bottom:20px;
+    }
+
+    .project-card p{
+      color:#ccc;
+      line-height:1.7;
+    }
+
+    .tags{
+      margin-top:20px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .tag{
+      padding:8px 15px;
+      background:#00f7ff20;
+      border-radius:30px;
+      color:#00f7ff;
+      font-size:14px;
+    }
+
+    /* Contact */
+
+    .contact{
+      text-align:center;
+    }
+
+    .contact p{
+      color:#aaa;
+      margin-bottom:30px;
+    }
+
+    footer{
+      padding:30px;
+      text-align:center;
+      color:#666;
+      border-top:1px solid #111827;
+    }
+
+    /* Animation */
+
+    .hidden{
+      opacity:0;
+      transform:translateY(50px);
+      transition:all 1s;
+    }
+
+    .show{
+      opacity:1;
+      transform:translateY(0);
+    }
+
+    @media(max-width:768px){
+
+      .hero-content h1{
+        font-size:45px;
+      }
+
+      nav{
+        padding:20px 5%;
+      }
+
+      nav ul{
+        display:none;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+
+  <nav>
+    <h2>Portfolio</h2>
+
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+
+  <section class="hero">
+    <div class="hero-content hidden">
+      <h1>Sarveshwaran K</h1>
+
+      <h3>Full Stack Developer | Java Developer</h3>
+
+      <p>
+        Passionate about building modern web applications,
+        solving real-world problems, and creating innovative
+        digital experiences using Java, React.js, Spring Boot,
+        and MySQL.
+      </p>
+
+      <div class="buttons">
+        <a href="#" class="btn">Download Resume</a>
+        <a href="#projects" class="btn outline">View Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+
+  <section id="about">
+
+    <h2 class="title hidden">About Me</h2>
+
+    <div class="about-box hidden">
+      Aspiring Full Stack Developer with expertise in Java,
+      React.js, Spring Boot, SQL, HTML, CSS, and JavaScript.
+      Strong problem-solving skills with passion for building
+      scalable and user-friendly applications.
+    </div>
+
+  </section>
+
+  <!-- Skills -->
+
+  <section id="skills">
+
+    <h2 class="title hidden">Skills</h2>
+
+    <div class="skills-container">
+
+      <div class="skill-card hidden">
+        <h3>Frontend</h3>
+
+        <ul>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React.js</li>
+        </ul>
+      </div>
+
+      <div class="skill-card hidden">
+        <h3>Backend</h3>
+
+        <ul>
+          <li>Java</li>
+          <li>Spring Boot</li>
+          <li>REST APIs</li>
+        </ul>
+      </div>
+
+      <div class="skill-card hidden">
+        <h3>Database & Tools</h3>
+
+        <ul>
+          <li>MySQL</li>
+          <li>GitHub</li>
+          <li>VS Code</li>
+        </ul>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Projects -->
+
+  <section id="projects">
+
+    <h2 class="title hidden">Projects</h2>
+
+    <div class="projects">
+
+      <div class="project-card hidden">
+
+        <h3>COCOMO Estimator</h3>
+
+        <p>
+          A web application that estimates software effort,
+          cost, and project timeline using the COCOMO model.
+        </p>
+
+        <div class="tags">
+          <span class="tag">React.js</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">JavaScript</span>
+        </div>
+
+      </div>
+
+      <div class="project-card hidden">
+
+        <h3>Business Idea Validation Tool</h3>
+
+        <p>
+          A startup-focused platform helping entrepreneurs
+          validate business ideas using market analysis and
+          competitor insights.
+        </p>
+
+        <div class="tags">
+          <span class="tag">React.js</span>
+          <span class="tag">Spring Boot</span>
+          <span class="tag">MySQL</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Contact -->
+
+  <section id="contact" class="contact">
+
+    <h2 class="title hidden">Contact</h2>
+
+    <p class="hidden">
+      Open to internships, collaborations, and full stack opportunities.
+    </p>
+
+    <div class="buttons hidden">
+      <a href="mailto:sarvesh6120@gmail.com" class="btn">
+        Email Me
+      </a>
+
+      <a href="#" class="btn outline">
+        GitHub
+      </a>
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 Sarveshwaran K | Portfolio
+  </footer>
+
+  <script>
+
+    // Scroll Animation
+
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach((entry)=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('show');
+        }
+      });
+    });
+
+    const hiddenElements = document.querySelectorAll('.hidden');
+
+    hiddenElements.forEach((el)=>observer.observe(el));
+
+  </script>
+
+</body>
+</html>
